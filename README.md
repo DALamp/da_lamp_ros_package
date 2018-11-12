@@ -1,2 +1,2 @@
-# da_lamp_ros_package
+# DA Lamp ROS package
 ROS package for Documentation Assistant Lamp

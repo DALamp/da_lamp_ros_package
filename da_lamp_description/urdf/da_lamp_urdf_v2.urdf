@@ -1,0 +1,354 @@
+<?xml version="1.0" ?>
+<robot name="da_lamp_urdf_v2">
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <mass value="0.511483"/>
+    <inertia ixx="0.002019" ixy="4.5e-05" ixz="0.0" iyy="0.002695" iyz="0.0" izz="0.002207"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/base_link.dae"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/base_link.dae"/>
+    </geometry>
+  </collision>
+</link>
+<link name="head__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.142372 -0.27105 0.0"/>
+    <mass value="0.297452"/>
+    <inertia ixx="0.026479" ixy="-0.013889" ixz="0.0" iyy="0.008156" iyz="0.0" izz="0.034164"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.142372 -0.27105 0.0"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/head__1.dae"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.142372 -0.27105 0.0"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/head__1.dae"/>
+    </geometry>
+  </collision>
+</link>
+
+
+<link name="link4__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.155752 -0.280622 -0.0075"/>
+    <mass value="0.06222"/>
+    <inertia ixx="0.005587" ixy="0.002132" ixz="6.9e-05" iyy="0.000861" iyz="-2.6e-05" izz="0.006407"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.155752 -0.280622 -0.0075"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link4__1.dae"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.155752 -0.280622 -0.0075"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link4__1.dae"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link4__2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.113204 -0.265972 -0.0075"/>
+    <mass value="0.06222"/>
+    <inertia ixx="0.005587" ixy="0.002132" ixz="6.9e-05" iyy="0.000861" iyz="-2.6e-05" izz="0.006407"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.113204 -0.265972 -0.0075"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link4__1.dae"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.113204 -0.265972 -0.0075"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link4__1.dae"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link3__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.044 -0.105 -0.0075"/>
+    <mass value="0.035859"/>
+    <inertia ixx="0.001342" ixy="0.000306" ixz="-0.0" iyy="0.00012" iyz="0.0" izz="0.00146"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.044 -0.105 -0.0075"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link3__1.dae"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.044 -0.105 -0.0075"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link3__1.dae"/>
+    </geometry>
+  </collision>
+</link>
+<link name="link2__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.001452 -0.119651 -0.0075"/>
+    <mass value="0.040954"/>
+    <inertia ixx="0.001611" ixy="0.000631" ixz="-1e-06" iyy="0.000287" iyz="0.0" izz="0.001896"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.001452 -0.119651 -0.0075"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link2__1.dae"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.001452 -0.119651 -0.0075"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link2__1.dae"/>
+    </geometry>
+  </collision>
+</link>
+<link name="link8__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.134895 -0.210548 -0.0075"/>
+    <mass value="0.013989"/>
+    <inertia ixx="0.000765" ixy="-0.000456" ixz="-1e-06" iyy="0.000275" iyz="-1e-06" izz="0.001039"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.134895 -0.210548 -0.0075"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link8__1.dae"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.134895 -0.210548 -0.0075"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link8__1.dae"/>
+    </geometry>
+  </collision>
+</link>
+<link name="link6__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.080648 -0.302477 -0.0075"/>
+    <mass value="0.035859"/>
+    <inertia ixx="0.002046" ixy="-1e-06" ixz="-0.0" iyy="0.000112" iyz="-0.0" izz="0.002157"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.080648 -0.302477 -0.0075"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link6__1.dae"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.080648 -0.302477 -0.0075"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link6__1.dae"/>
+    </geometry>
+  </collision>
+</link>
+<link name="link5__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.100601 -0.342812 -0.0075"/>
+    <mass value="0.042957"/>
+    <inertia ixx="0.003628" ixy="0.000433" ixz="-6e-06" iyy="0.000189" iyz="2e-06" izz="0.003815"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.100601 -0.342812 -0.0075"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link5__1.dae"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.100601 -0.342812 -0.0075"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link5__1.dae"/>
+    </geometry>
+  </collision>
+</link>
+<link name="link1__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0 -0.07 0.0"/>
+    <mass value="0.151306"/>
+    <inertia ixx="0.001205" ixy="-1.3e-05" ixz="3e-05" iyy="0.000196" iyz="-6e-06" izz="0.001238"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.0 -0.07 0.0"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link1__1.dae"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.0 -0.07 0.0"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link1__1.dae"/>
+    </geometry>
+  </collision>
+</link>
+
+
+
+<link name="link7__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.10155 -0.17174 -0.0075"/>
+    <mass value="0.045877"/>
+    <inertia ixx="0.001795" ixy="-0.000998" ixz="4.9e-05" iyy="0.000588" iyz="2.9e-05" izz="0.002351"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.10155 -0.17174 -0.0075"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link7__1.dae"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.10155 -0.17174 -0.0075"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link7__1.dae"/>
+    </geometry>
+  </collision>
+</link>
+<link name="link7__2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.081596 -0.212074 -0.0075"/>
+    <mass value="0.045877"/>
+    <inertia ixx="0.001795" ixy="-0.000998" ixz="4.9e-05" iyy="0.000588" iyz="2.9e-05" izz="0.002351"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.081596 -0.212074 -0.0075"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link7__1.dae"/>
+    </geometry>
+    <material name="silver">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.081596 -0.212074 -0.0075"/>
+    <geometry>
+      <mesh filename="package://da_lamp_description/urdf/mm_dae/link7__1.dae"/>
+    </geometry>
+  </collision>
+</link>
+
+
+<joint name="Rev11" type="continuous">
+  <origin rpy="0 0 0" xyz="0.007477 0.060502 -0.0075"/>
+  <parent link="link8__1"/>
+  <child link="head__1"/>
+  <axis xyz="4e-06 -0.01 0.0"/>
+</joint>
+<joint name="Rev4" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.111823 0.14904 0.005"/>
+  <parent link="link2__1"/>
+  <child link="link4__1"/>
+  <axis xyz="-0.0 0.0 -0.01"/>
+</joint>
+<joint name="Rev2" type="continuous">
+  <origin rpy="0 0 0" xyz="0.044 0.035 0.0075"/>
+  <parent link="link1__1"/>
+  <child link="link3__1"/>
+  <axis xyz="0.0 0.0 -0.01"/>
+</joint>
+<joint name="Rev5" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.154371 0.163691 0.005"/>
+  <parent link="link3__1"/>
+  <child link="link4__2"/>
+  <axis xyz="0.0 -0.0 -0.01"/>
+</joint>
+<joint name="Rev3" type="continuous">
+  <origin rpy="0 0 0" xyz="0.001452 0.049651 0.0075"/>
+  <parent link="link1__1"/>
+  <child link="link2__1"/>
+  <axis xyz="0.0 0.0 -0.01"/>
+</joint>
+<joint name="Rev10" type="continuous">
+  <origin rpy="0 0 0" xyz="0.055046 0.002134 -0.005"/>
+  <parent link="link7__1"/>
+  <child link="link8__1"/>
+  <axis xyz="0.0 0.0 0.01"/>
+</joint>
+<joint name="Rev6" type="continuous">
+  <origin rpy="0 0 0" xyz="0.029723 0.033786 -0.005"/>
+  <parent link="link4__1"/>
+  <child link="link6__1"/>
+  <axis xyz="0.0 -0.0 0.01"/>
+</joint>
+<joint name="Rev7" type="continuous">
+  <origin rpy="0 0 0" xyz="0.00977 0.074121 -0.005"/>
+  <parent link="link4__1"/>
+  <child link="link5__1"/>
+  <axis xyz="0.0 -0.0 0.01"/>
+</joint>
+<joint name="Rev1" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 0.07 0.0"/>
+  <parent link="base_link"/>
+  <child link="link1__1"/>
+  <axis xyz="0.0 0.01 0.0"/>
+</joint>
+<joint name="Rev9" type="continuous">
+  <origin rpy="0 0 0" xyz="0.160497 -0.094063 0.005"/>
+  <parent link="link6__1"/>
+  <child link="link7__1"/>
+  <axis xyz="-0.0 -0.0 -0.01"/>
+</joint>
+<joint name="Rev8" type="continuous">
+  <origin rpy="0 0 0" xyz="0.18045 -0.134398 0.005"/>
+  <parent link="link5__1"/>
+  <child link="link7__2"/>
+  <axis xyz="-0.0 -0.0 -0.01"/>
+</joint>
+
+<joint name="Fix4" type="fixed">
+  <origin rpy="0 0 0" xyz="0 0 0"/>
+  <parent link="link4__1"/>
+  <child link="link4__2"/>
+</joint>
+<joint name="Fix7" type="fixed">
+  <origin rpy="0 0 0" xyz="0 0 0"/>
+  <parent link="link7__1"/>
+  <child link="link7__2"/>
+</joint>
+
+</robot>

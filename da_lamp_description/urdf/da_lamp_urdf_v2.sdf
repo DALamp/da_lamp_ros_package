@@ -1,0 +1,1066 @@
+<sdf version='1.6'>
+  <model name='da_lamp_sdf_v2'>
+    <link name='base_link'>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <mass>0.511483</mass>
+        <inertia>
+          <ixx>0.002019</ixx>
+          <ixy>4.5e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.002695</iyy>
+          <iyz>0</iyz>
+          <izz>0.002207</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/base_link.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/base_link.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <link name='link1__1'>
+      <pose frame=''>0 0.07 0 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0 -0.07 0 0 -0 0</pose>
+        <mass>0.151306</mass>
+        <inertia>
+          <ixx>0.001205</ixx>
+          <ixy>-1.3e-05</ixy>
+          <ixz>3e-05</ixz>
+          <iyy>0.000196</iyy>
+          <iyz>-6e-06</iyz>
+          <izz>0.001238</izz>
+        </inertia>
+      </inertial>
+      <collision name='link1__1_collision'>
+        <pose frame=''>0 -0.07 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link1__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link1__1_visual'>
+        <pose frame=''>0 -0.07 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link1__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev1' type='revolute'>
+      <child>link1__1</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 0.01 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link3__1'>
+      <pose frame=''>0.044 0.105 0.0075 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.044 -0.105 -0.0075 0 -0 0</pose>
+        <mass>0.035859</mass>
+        <inertia>
+          <ixx>0.001342</ixx>
+          <ixy>0.000306</ixy>
+          <ixz>-0</ixz>
+          <iyy>0.00012</iyy>
+          <iyz>0</iyz>
+          <izz>0.00146</izz>
+        </inertia>
+      </inertial>
+      <collision name='link3__1_collision'>
+        <pose frame=''>-0.044 -0.105 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link3__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link3__1_visual'>
+        <pose frame=''>-0.044 -0.105 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link3__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev2' type='revolute'>
+      <child>link3__1</child>
+      <parent>link1__1</parent>
+      <axis>
+        <xyz>0 0 -0.01</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link4__1'>
+      <pose frame=''>-0.110371 0.268691 0.0125 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0.152919 -0.283341 -0.0125 0 -0 0</pose>
+        <mass>0.055953</mass>
+        <inertia>
+          <ixx>0.005118</ixx>
+          <ixy>0.00189</ixy>
+          <ixz>8.1e-05</ixz>
+          <iyy>0.000745</iyy>
+          <iyz>-3e-05</iyz>
+          <izz>0.005822</izz>
+        </inertia>
+      </inertial>
+      <collision name='link4__1_collision'>
+        <pose frame=''>0.152919 -0.283341 -0.0125 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link4__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link4__1_visual'>
+        <pose frame=''>0.152919 -0.283341 -0.0125 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link4__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev5' type='revolute'>
+      <child>link4__1</child>
+      <parent>link3__1</parent>
+      <axis>
+        <xyz>0 0 -0.01</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link6__1'>
+      <pose frame=''>-0.080648 0.302477 0.0075 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0.080648 -0.302477 -0.0075 0 -0 0</pose>
+        <mass>0.035859</mass>
+        <inertia>
+          <ixx>0.002046</ixx>
+          <ixy>-1e-06</ixy>
+          <ixz>-0</ixz>
+          <iyy>0.000112</iyy>
+          <iyz>-0</iyz>
+          <izz>0.002157</izz>
+        </inertia>
+      </inertial>
+      <collision name='link6__1_collision'>
+        <pose frame=''>0.080648 -0.302477 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link6__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link6__1_visual'>
+        <pose frame=''>0.080648 -0.302477 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link6__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev6' type='revolute'>
+      <child>link6__1</child>
+      <parent>link4__1</parent>
+      <axis>
+        <xyz>0 0 0.01</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link7__1'>
+      <pose frame=''>0.079849 0.208414 0.0125 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.099803 -0.16808 -0.0125 0 -0 0</pose>
+        <mass>0.039554</mass>
+        <inertia>
+          <ixx>0.0015</ixx>
+          <ixy>-0.000829</ixy>
+          <ixz>5.5e-05</ixz>
+          <iyy>0.000489</iyy>
+          <iyz>3.3e-05</iyz>
+          <izz>0.001958</izz>
+        </inertia>
+      </inertial>
+      <collision name='link7__1_collision'>
+        <pose frame=''>-0.099803 -0.16808 -0.0125 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link7__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link7__1_visual'>
+        <pose frame=''>-0.099803 -0.16808 -0.0125 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link7__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev9' type='revolute'>
+      <child>link7__1</child>
+      <parent>link6__1</parent>
+      <axis>
+        <xyz>0 0 -0.01</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link8__1'>
+      <pose frame=''>0.134895 0.210548 0.0075 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.134895 -0.210548 -0.0075 0 -0 0</pose>
+        <mass>0.013989</mass>
+        <inertia>
+          <ixx>0.000765</ixx>
+          <ixy>-0.000456</ixy>
+          <ixz>-1e-06</ixz>
+          <iyy>0.000275</iyy>
+          <iyz>-1e-06</iyz>
+          <izz>0.001039</izz>
+        </inertia>
+      </inertial>
+      <collision name='link8__1_collision'>
+        <pose frame=''>-0.134895 -0.210548 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link8__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link8__1_visual'>
+        <pose frame=''>-0.134895 -0.210548 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link8__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev10' type='revolute'>
+      <child>link8__1</child>
+      <parent>link7__1</parent>
+      <axis>
+        <xyz>0 0 0.01</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='head__1'>
+      <pose frame=''>0.142372 0.27105 0 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.142372 -0.27105 0 0 -0 0</pose>
+        <mass>0.297452</mass>
+        <inertia>
+          <ixx>0.026479</ixx>
+          <ixy>-0.013889</ixy>
+          <ixz>0</ixz>
+          <iyy>0.008156</iyy>
+          <iyz>0</iyz>
+          <izz>0.034164</izz>
+        </inertia>
+      </inertial>
+      <collision name='head__1_collision'>
+        <pose frame=''>-0.142372 -0.27105 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/head__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='head__1_visual'>
+        <pose frame=''>-0.142372 -0.27105 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/head__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev11' type='revolute'>
+      <child>head__1</child>
+      <parent>link8__1</parent>
+      <axis>
+        <xyz>4e-06 -0.01 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link5__1'>
+      <pose frame=''>-0.100601 0.342812 0.0075 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0.100601 -0.342812 -0.0075 0 -0 0</pose>
+        <mass>0.042957</mass>
+        <inertia>
+          <ixx>0.003628</ixx>
+          <ixy>0.000433</ixy>
+          <ixz>-6e-06</ixz>
+          <iyy>0.000189</iyy>
+          <iyz>2e-06</iyz>
+          <izz>0.003815</izz>
+        </inertia>
+      </inertial>
+      <collision name='link5__1_collision'>
+        <pose frame=''>0.100601 -0.342812 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link5__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link5__1_visual'>
+        <pose frame=''>0.100601 -0.342812 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link5__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev7' type='revolute'>
+      <child>link5__1</child>
+      <parent>link4__1</parent>
+      <axis>
+        <xyz>0 0 0.01</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link7__1'>
+      <pose frame=''>0.059896 0.248749 0.0125 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.099803 -0.16808 -0.0125 0 -0 0</pose>
+        <mass>0.039554</mass>
+        <inertia>
+          <ixx>0.0015</ixx>
+          <ixy>-0.000829</ixy>
+          <ixz>5.5e-05</ixz>
+          <iyy>0.000489</iyy>
+          <iyz>3.3e-05</iyz>
+          <izz>0.001958</izz>
+        </inertia>
+      </inertial>
+      <collision name='link7__1_collision'>
+        <pose frame=''>-0.099803 -0.16808 -0.0125 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link7__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link7__1_visual'>
+        <pose frame=''>-0.099803 -0.16808 -0.0125 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link7__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev9' type='revolute'>
+      <child>link7__1</child>
+      <parent>link6__1</parent>
+      <axis>
+        <xyz>0 0 -0.01</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link8__1'>
+      <pose frame=''>0.114942 0.250883 0.0075 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.134895 -0.210548 -0.0075 0 -0 0</pose>
+        <mass>0.013989</mass>
+        <inertia>
+          <ixx>0.000765</ixx>
+          <ixy>-0.000456</ixy>
+          <ixz>-1e-06</ixz>
+          <iyy>0.000275</iyy>
+          <iyz>-1e-06</iyz>
+          <izz>0.001039</izz>
+        </inertia>
+      </inertial>
+      <collision name='link8__1_collision'>
+        <pose frame=''>-0.134895 -0.210548 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link8__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link8__1_visual'>
+        <pose frame=''>-0.134895 -0.210548 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link8__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev10' type='revolute'>
+      <child>link8__1</child>
+      <parent>link7__1</parent>
+      <axis>
+        <xyz>0 0 0.01</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='head__1'>
+      <pose frame=''>0.122419 0.311385 0 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.142372 -0.27105 0 0 -0 0</pose>
+        <mass>0.297452</mass>
+        <inertia>
+          <ixx>0.026479</ixx>
+          <ixy>-0.013889</ixy>
+          <ixz>0</ixz>
+          <iyy>0.008156</iyy>
+          <iyz>0</iyz>
+          <izz>0.034164</izz>
+        </inertia>
+      </inertial>
+      <collision name='head__1_collision'>
+        <pose frame=''>-0.142372 -0.27105 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/head__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='head__1_visual'>
+        <pose frame=''>-0.142372 -0.27105 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/head__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev11' type='revolute'>
+      <child>head__1</child>
+      <parent>link8__1</parent>
+      <axis>
+        <xyz>4e-06 -0.01 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link2__1'>
+      <pose frame=''>0.001452 0.119651 0.0075 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.001452 -0.119651 -0.0075 0 -0 0</pose>
+        <mass>0.040954</mass>
+        <inertia>
+          <ixx>0.001611</ixx>
+          <ixy>0.000631</ixy>
+          <ixz>-1e-06</ixz>
+          <iyy>0.000287</iyy>
+          <iyz>0</iyz>
+          <izz>0.001896</izz>
+        </inertia>
+      </inertial>
+      <collision name='link2__1_collision'>
+        <pose frame=''>-0.001452 -0.119651 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link2__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link2__1_visual'>
+        <pose frame=''>-0.001452 -0.119651 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link2__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev3' type='revolute'>
+      <child>link2__1</child>
+      <parent>link1__1</parent>
+      <axis>
+        <xyz>0 0 -0.01</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link4__1'>
+      <pose frame=''>-0.152919 0.283342 0.0125 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0.152919 -0.283341 -0.0125 0 -0 0</pose>
+        <mass>0.055953</mass>
+        <inertia>
+          <ixx>0.005118</ixx>
+          <ixy>0.00189</ixy>
+          <ixz>8.1e-05</ixz>
+          <iyy>0.000745</iyy>
+          <iyz>-3e-05</iyz>
+          <izz>0.005822</izz>
+        </inertia>
+      </inertial>
+      <collision name='link4__1_collision'>
+        <pose frame=''>0.152919 -0.283341 -0.0125 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link4__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link4__1_visual'>
+        <pose frame=''>0.152919 -0.283341 -0.0125 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link4__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev5' type='revolute'>
+      <child>link4__1</child>
+      <parent>link3__1</parent>
+      <axis>
+        <xyz>0 0 -0.01</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link6__1'>
+      <pose frame=''>-0.123196 0.317128 0.0075 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0.080648 -0.302477 -0.0075 0 -0 0</pose>
+        <mass>0.035859</mass>
+        <inertia>
+          <ixx>0.002046</ixx>
+          <ixy>-1e-06</ixy>
+          <ixz>-0</ixz>
+          <iyy>0.000112</iyy>
+          <iyz>-0</iyz>
+          <izz>0.002157</izz>
+        </inertia>
+      </inertial>
+      <collision name='link6__1_collision'>
+        <pose frame=''>0.080648 -0.302477 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link6__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link6__1_visual'>
+        <pose frame=''>0.080648 -0.302477 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link6__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev6' type='revolute'>
+      <child>link6__1</child>
+      <parent>link4__1</parent>
+      <axis>
+        <xyz>0 0 0.01</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link7__1'>
+      <pose frame=''>0.037301 0.223065 0.0125 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.099803 -0.16808 -0.0125 0 -0 0</pose>
+        <mass>0.039554</mass>
+        <inertia>
+          <ixx>0.0015</ixx>
+          <ixy>-0.000829</ixy>
+          <ixz>5.5e-05</ixz>
+          <iyy>0.000489</iyy>
+          <iyz>3.3e-05</iyz>
+          <izz>0.001958</izz>
+        </inertia>
+      </inertial>
+      <collision name='link7__1_collision'>
+        <pose frame=''>-0.099803 -0.16808 -0.0125 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link7__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link7__1_visual'>
+        <pose frame=''>-0.099803 -0.16808 -0.0125 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link7__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev9' type='revolute'>
+      <child>link7__1</child>
+      <parent>link6__1</parent>
+      <axis>
+        <xyz>0 0 -0.01</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link8__1'>
+      <pose frame=''>0.092347 0.225199 0.0075 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.134895 -0.210548 -0.0075 0 -0 0</pose>
+        <mass>0.013989</mass>
+        <inertia>
+          <ixx>0.000765</ixx>
+          <ixy>-0.000456</ixy>
+          <ixz>-1e-06</ixz>
+          <iyy>0.000275</iyy>
+          <iyz>-1e-06</iyz>
+          <izz>0.001039</izz>
+        </inertia>
+      </inertial>
+      <collision name='link8__1_collision'>
+        <pose frame=''>-0.134895 -0.210548 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link8__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link8__1_visual'>
+        <pose frame=''>-0.134895 -0.210548 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link8__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev10' type='revolute'>
+      <child>link8__1</child>
+      <parent>link7__1</parent>
+      <axis>
+        <xyz>0 0 0.01</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='head__1'>
+      <pose frame=''>0.099824 0.285701 0 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.142372 -0.27105 0 0 -0 0</pose>
+        <mass>0.297452</mass>
+        <inertia>
+          <ixx>0.026479</ixx>
+          <ixy>-0.013889</ixy>
+          <ixz>0</ixz>
+          <iyy>0.008156</iyy>
+          <iyz>0</iyz>
+          <izz>0.034164</izz>
+        </inertia>
+      </inertial>
+      <collision name='head__1_collision'>
+        <pose frame=''>-0.142372 -0.27105 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/head__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='head__1_visual'>
+        <pose frame=''>-0.142372 -0.27105 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/head__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev11' type='revolute'>
+      <child>head__1</child>
+      <parent>link8__1</parent>
+      <axis>
+        <xyz>4e-06 -0.01 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link5__1'>
+      <pose frame=''>-0.143149 0.357463 0.0075 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0.100601 -0.342812 -0.0075 0 -0 0</pose>
+        <mass>0.042957</mass>
+        <inertia>
+          <ixx>0.003628</ixx>
+          <ixy>0.000433</ixy>
+          <ixz>-6e-06</ixz>
+          <iyy>0.000189</iyy>
+          <iyz>2e-06</iyz>
+          <izz>0.003815</izz>
+        </inertia>
+      </inertial>
+      <collision name='link5__1_collision'>
+        <pose frame=''>0.100601 -0.342812 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link5__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link5__1_visual'>
+        <pose frame=''>0.100601 -0.342812 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link5__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev7' type='revolute'>
+      <child>link5__1</child>
+      <parent>link4__1</parent>
+      <axis>
+        <xyz>0 0 0.01</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link7__1'>
+      <pose frame=''>0.017348 0.2634 0.0125 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.099803 -0.16808 -0.0125 0 -0 0</pose>
+        <mass>0.039554</mass>
+        <inertia>
+          <ixx>0.0015</ixx>
+          <ixy>-0.000829</ixy>
+          <ixz>5.5e-05</ixz>
+          <iyy>0.000489</iyy>
+          <iyz>3.3e-05</iyz>
+          <izz>0.001958</izz>
+        </inertia>
+      </inertial>
+      <collision name='link7__1_collision'>
+        <pose frame=''>-0.099803 -0.16808 -0.0125 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link7__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link7__1_visual'>
+        <pose frame=''>-0.099803 -0.16808 -0.0125 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link7__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev9' type='revolute'>
+      <child>link7__1</child>
+      <parent>link6__1</parent>
+      <axis>
+        <xyz>0 0 -0.01</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='link8__1'>
+      <pose frame=''>0.072394 0.265534 0.0075 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.134895 -0.210548 -0.0075 0 -0 0</pose>
+        <mass>0.013989</mass>
+        <inertia>
+          <ixx>0.000765</ixx>
+          <ixy>-0.000456</ixy>
+          <ixz>-1e-06</ixz>
+          <iyy>0.000275</iyy>
+          <iyz>-1e-06</iyz>
+          <izz>0.001039</izz>
+        </inertia>
+      </inertial>
+      <collision name='link8__1_collision'>
+        <pose frame=''>-0.134895 -0.210548 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link8__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link8__1_visual'>
+        <pose frame=''>-0.134895 -0.210548 -0.0075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/link8__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev10' type='revolute'>
+      <child>link8__1</child>
+      <parent>link7__1</parent>
+      <axis>
+        <xyz>0 0 0.01</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='head__1'>
+      <pose frame=''>0.079871 0.326036 0 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.142372 -0.27105 0 0 -0 0</pose>
+        <mass>0.297452</mass>
+        <inertia>
+          <ixx>0.026479</ixx>
+          <ixy>-0.013889</ixy>
+          <ixz>0</ixz>
+          <iyy>0.008156</iyy>
+          <iyz>0</iyz>
+          <izz>0.034164</izz>
+        </inertia>
+      </inertial>
+      <collision name='head__1_collision'>
+        <pose frame=''>-0.142372 -0.27105 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/head__1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='head__1_visual'>
+        <pose frame=''>-0.142372 -0.27105 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://da_lamp_description/urdf/mm_stl/head__1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Rev11' type='revolute'>
+      <child>head__1</child>
+      <parent>link8__1</parent>
+      <axis>
+        <xyz>4e-06 -0.01 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+  </model>
+</sdf>

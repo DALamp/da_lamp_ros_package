@@ -1,0 +1,12 @@
+<launch> 
+
+<include file="$(find da_lamp_description)/launch/spawn_sdf_robot.launch">
+    <arg name="robot_name" value="da_lamp_urdf_v2" />
+    <arg name="x" value="0.0" />
+    <arg name="y" value="0.0" />
+    <arg name="z" value="1.0" />
+    <arg name="urdf_robot_file" value="$(find da_lamp_description)/urdf/da_lamp_urdf_v2.urdf" />
+</include>
+
+
+</launch>
