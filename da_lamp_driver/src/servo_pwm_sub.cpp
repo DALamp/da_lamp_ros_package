@@ -131,10 +131,12 @@ void setPWMFreq(int freq){
 
 
 uint16_t getPWM(int channel) {
-   byte regAddress = __LED0_ON_L + (channel << 2);
+   int regAddress = __LED0_ON_L + (channel << 2);
 
    int on = i2c_smbus_read_byte_data(file, regAddress);
    int off = on << 8;
+
+   int retVal;
 
    if (off >= __PWM_FULL)
         // Full OFF
@@ -154,7 +156,7 @@ uint16_t getPWM(int channel) {
         // Section 7.3.3 example 2
         retVal = (off + __PWM_FULL) - on;
 
-   return retVal
+   return retVal;
 }
 
 void initPWMHat(){
