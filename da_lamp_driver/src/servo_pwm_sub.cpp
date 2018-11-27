@@ -42,6 +42,50 @@ enum pwm_regs {
   __PWM_FULL           = 0x01000
 };
 
+
+
+
+
+float pie=3.14159; 
+
+int sinsize=1700; //can not be <400 or min servo resolution default sin wave size (trough to peak or pie in length)
+float event=sinsize * 15;  //cycles count limiter not really important as long as speed of servo isn't super slow  
+
+
+//specific variables 
+// servo default positions 
+// WARNING:  when a higher or lower number is input than what the servo can handle, 
+//           the servo may rapid to some manufacturer safe value 
+// WARNING: refer to technical documentation for each servo to stay within its range. 
+//  ccw   \->/   cw
+//   600- 1200- 2400   =180 sweep servo  type 1800 point resolution
+//  1050- 1550 - 1950   =90 sweep servo  type  900 point resolution
+//  1500- 1700 - 1900   =1260 sweep winch type 400 point resolution 
+
+//servo1 left shoulder 1500-1900 decrease to open
+int svo1c   =130;  //servo# closed position
+int svo1o   =530;   //servo# open position 
+
+//variables for use in all servo functions per servo
+
+float count1 =0; // sine wave x variable counts from 1 to 1700 (servo resolution) only starts counting after wait# reaches its activation value.                 
+float speed1=0;  //a value that consists of small increment values that change in magnitude depending on if the wave starts slow and ends fast or vise versa.  
+float speedtick1=0; //ticks off how long the hold position for the servo is in very small ms increments giving the illusion of a slower or faster moving servo 
+
+                 // y= a*sin(bx+c)+d 
+                 // yvar# = a#(sin (b#*count#+c#)+d#  
+float yvar1=0;   // actual ms value thrown at servo ranged, paused, speed shifted etc.  
+float a1=0;     //a# amplitude higher value taller wave shorter value shorter wave by magnitude:   a=(highest # - lowest #)/2
+float b1=0;     //b# lower value = longer wave or higher value=shorter wave this is phase shift or stretch of function b=2pi/(blabla*2) where blabla are desired wave size 
+float c1=0;     //c# is x frequency offset = what part of curve want to look at 
+float d1=0;     //d# is y offset  = 0.5*amplitude shifts the curve so it is wholey in 1st quadrant 
+int per1=0;     //trigger value either 0 or 1 to declare that that servo has reached its final position and so servo movement sequence of all servos (once all report per#=1)can end.
+
+
+
+
+
+
 void setAllPWM(int on, int off){
 	int res;
 	res = i2c_smbus_write_byte_data(file, __ALL_LED_ON_L, on & 0xFF);
@@ -159,6 +203,99 @@ uint16_t getPWM(int channel) {
    return retVal;
 }
 
+
+
+//start of primary move function that includes all servos and is called up and activated per each event
+void movef(float ecycle,float w81,float spa1,float spb1,float yprev1,float ynext1, int i)
+{
+         
+         usleep(1);   //master delay 
+	 count1 = 1;   //reset of count# 
+         speedtick1 = 1;  //reset of speedtick#
+         b1=(2*pie/(sinsize*2));  //coefficient of sine math function 
+         
+          
+            if(ynext1 > yprev1)  //sets sine wave coefficients depending on positions
+            {
+              a1= (ynext1-yprev1)/2;  //coefficient of sine math function 
+              c1= (1.5)*pie;           //coefficient of sine math function 
+              d1= yprev1+a1;            //coefficient of sine math function 
+            }
+            else  //(ynext# < yprev#)
+            {
+              a1= (yprev1-ynext1)/2;
+              c1= (0.5)*pie;  
+              d1= yprev1-a1; 
+            }
+            
+              //###coefficient establishment for all sine waves end ###
+            
+            int per1=0; //reset of all trigger values in case there is carry over from a pindexevious run
+           
+              
+       //global loop for all servos cycles by each servo and sees if it has an tiny move.                             
+       for (float count = 0; count < ecycle; count +=1)  
+       {  
+         //traditional speed values start off as spa# and end up as spb# as count# ticks away on the fly as curve is being drawn. 
+        // result is a sine curve that is compressed in the x axis on one end (spa#=large number) and stretched on other end (spb#=small number).   
+         
+         if (spa1 > spb1) {speed1=((count1+1)/sinsize)*(spa1-spb1) + spb1;} //start fast end slow 
+         else {speed1= ((count1+1)/sinsize)*(spb1-spa1)+ spa1;} // start slow end fast 
+         
+        
+  // servo #1   3 states or cases 
+        if (count < w81) //case 1 servo not ready to move yet      
+            {
+            setPWM(i, yprev1);  
+            
+            }
+        
+         else if (count>w81 && count1 > sinsize) //case 3 motion is done and position is held 
+            {
+            setPWM(i, ynext1); 
+            
+            per1=1; //declares this servo is finished with its movement 
+            }
+         
+         else if (count > w81)   //case 2 sin wave function active with optional hold position while big loop asks other servos for their turn  
+            {
+              
+              if (count1 < sinsize && speedtick1 == 1)  //new position of servo is written 
+                {   
+                   yvar1= a1*sin((count1)*b1+c1)+d1;  //the math function
+                   setPWM(i, yvar1);   //throws a command at the servo 
+                   speedtick1 += 1; // start of increment to count for possible pauses at this position to simulate slow 
+                   count1 += 1; //increments sine wave operator x in y=f(x) 
+                   
+                }
+                else if (speedtick1 > 1 && speedtick1 < speed1)  //sine wave is sustained at old value for 1 to speed# as counted by speedtick# 
+                {
+                  setPWM(i, yvar1); 
+                  speedtick1 += 1;  //increments speedtick1 to delay the servo at one position along its travel to simulate a speed
+                  
+                }
+                else //sine wave is now permitted to continue by having speedtick# reset 
+                {
+                  count1+=1; //lock out the sine function from going past sinsize by ever increasing count# 
+                 speedtick1 = 1; //reset for next fly through of sine function 
+                 
+                }  
+            }  //end if statement for case 2
+ 
+
+       if(per1 == 1)//breaks FOR loop out of further un necessary cycles as all servos report their movement complete
+         {
+          break; 
+         }
+    
+   }  //end of for loop statement for all servo steps  
+ 
+} //end of void subroutine function for entire move function 
+
+
+
+
+
 void initPWMHat(){
 	int res;
 	char mode1res;
@@ -210,7 +347,8 @@ void chatterCallback(const std_msgs::Int16MultiArray::ConstPtr& msg)
 		ROS_INFO("val:[%d]", arr[i]);
 
 		if(arr[i] < 4096)
-			setPWM(i,arr[i]);
+			movef(event,1100,25,25,getPWM(i),arr[i],i);
+			//setPWM(i,arr[i]);
 		i++;
 	}
 
