@@ -133,7 +133,6 @@ void setPWMFreq(int freq){
 	int prescale;
 	char oldmode, newmode;
 	int res;
-
 	float prescaleval = 25000000.0; // 25MHz
 	prescaleval /= 4096.0;
 	prescaleval /= (float)freq;
@@ -169,35 +168,38 @@ void setPWMFreq(int freq){
 	if(res < 0)
 		perror("serr3");
 
-
-
 };
 
 
-uint16_t getPWM(int channel) {
+int getPWM(int channel) {
    int regAddress = __LED0_ON_L + (channel << 2);
 
-   int on = i2c_smbus_read_byte_data(file, regAddress);
-   int off = on << 8;
+   int res = i2c_smbus_write_byte_data(file, addr, regAddress);
+   if(res < 0)
+       perror("gerro1");
+
+   int on = i2c_smbus_read_byte_data(file, __LED0_ON_L+channel*4);
+   on |= i2c_smbus_read_byte_data(file, __LED0_ON_H+channel*4) << 8;
+   int off = i2c_smbus_read_byte_data(file, __LED0_OFF_L+channel*4);
+   off |= i2c_smbus_read_byte_data(file, __LED0_OFF_H+channel*4) << 8;
 
    int retVal;
 
+   //printf("regAdd: 0x%02X \n", regAddress);
+   //printf("on: 0x%02X \n", on);
+   //printf("off: 0x%02X \n", off);
+
    if (off >= __PWM_FULL)
         // Full OFF
-        // Figure 11 Example 4: full OFF takes precedence over full ON
-        // See also remark after Table 7
         retVal = 0;
    else if (on >= __PWM_FULL)
         // Full ON
-        // Figure 9 Example 3
         retVal = __PWM_FULL;
    else if (on <= off)
         // start and finish in same cycle
-        // Section 7.3.3 example 1
         retVal = off - on;
    else
         // span cycles
-        // Section 7.3.3 example 2
         retVal = (off + __PWM_FULL) - on;
 
    return retVal;
@@ -347,9 +349,13 @@ void chatterCallback(const std_msgs::Int16MultiArray::ConstPtr& msg)
 		ROS_INFO("val:[%d]", arr[i]);
 
 		if(arr[i] < 4096)
+
 			movef(event,1100,25,25,getPWM(i),arr[i],i);
 			//setPWM(i,arr[i]);
+
+		//ROS_INFO("Getting PWM %d from channel %d", getPWM(i), i);
 		i++;
+		
 	}
 
   //ROS_INFO("I heard: [%d]", msg->data);
@@ -361,7 +367,7 @@ int main(int argc, char **argv)
 
 	initPWMHat();
 
-	setPWMFreq(60);  //60 Hz
+	setPWMFreq(50);  //50 Hz
 
 	ros::init(argc, argv, "servo_pwm_sub");
 
