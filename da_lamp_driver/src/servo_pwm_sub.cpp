@@ -48,8 +48,8 @@ enum pwm_regs {
 
 float pie=3.14159; 
 
-int sinsize=1700; //can not be <400 or min servo resolution default sin wave size (trough to peak or pie in length)
-float event=sinsize * 15;  //cycles count limiter not really important as long as speed of servo isn't super slow  
+int sinsize=1000; //can not be <400 or min servo resolution default sin wave size (trough to peak or pie in length)
+float event=sinsize * 5;  //cycles count limiter not really important as long as speed of servo isn't super slow  
 
 
 //specific variables 
@@ -62,9 +62,6 @@ float event=sinsize * 15;  //cycles count limiter not really important as long a
 //  1050- 1550 - 1950   =90 sweep servo  type  900 point resolution
 //  1500- 1700 - 1900   =1260 sweep winch type 400 point resolution 
 
-//servo1 left shoulder 1500-1900 decrease to open
-int svo1c   =130;  //servo# closed position
-int svo1o   =530;   //servo# open position 
 
 //variables for use in all servo functions per servo
 
@@ -210,14 +207,17 @@ int getPWM(int channel) {
 //start of primary move function that includes all servos and is called up and activated per each event
 void movef(float ecycle,float w81,float spa1,float spb1,float yprev1,float ynext1, int i)
 {
-         
          usleep(1);   //master delay 
 	 count1 = 1;   //reset of count# 
          speedtick1 = 1;  //reset of speedtick#
          b1=(2*pie/(sinsize*2));  //coefficient of sine math function 
          
           
-            if(ynext1 > yprev1)  //sets sine wave coefficients depending on positions
+	    if(ynext1 == yprev1)
+	    {
+              return; 
+	    }
+            else if(ynext1 > yprev1)  //sets sine wave coefficients depending on positions
             {
               a1= (ynext1-yprev1)/2;  //coefficient of sine math function 
               c1= (1.5)*pie;           //coefficient of sine math function 
@@ -244,17 +244,18 @@ void movef(float ecycle,float w81,float spa1,float spb1,float yprev1,float ynext
          if (spa1 > spb1) {speed1=((count1+1)/sinsize)*(spa1-spb1) + spb1;} //start fast end slow 
          else {speed1= ((count1+1)/sinsize)*(spb1-spa1)+ spa1;} // start slow end fast 
          
+         //ROS_INFO("servo # %d, at angle %f", i, yvar1);
         
   // servo #1   3 states or cases 
         if (count < w81) //case 1 servo not ready to move yet      
             {
-            setPWM(i, yprev1);  
+            setPWM(i, (int)yprev1);  
             
             }
         
          else if (count>w81 && count1 > sinsize) //case 3 motion is done and position is held 
             {
-            setPWM(i, ynext1); 
+            setPWM(i, (int)ynext1); 
             
             per1=1; //declares this servo is finished with its movement 
             }
@@ -265,14 +266,14 @@ void movef(float ecycle,float w81,float spa1,float spb1,float yprev1,float ynext
               if (count1 < sinsize && speedtick1 == 1)  //new position of servo is written 
                 {   
                    yvar1= a1*sin((count1)*b1+c1)+d1;  //the math function
-                   setPWM(i, yvar1);   //throws a command at the servo 
+                   setPWM(i, (int)yvar1);   //throws a command at the servo 
                    speedtick1 += 1; // start of increment to count for possible pauses at this position to simulate slow 
                    count1 += 1; //increments sine wave operator x in y=f(x) 
                    
                 }
                 else if (speedtick1 > 1 && speedtick1 < speed1)  //sine wave is sustained at old value for 1 to speed# as counted by speedtick# 
                 {
-                  setPWM(i, yvar1); 
+                  setPWM(i, (int)yvar1); 
                   speedtick1 += 1;  //increments speedtick1 to delay the servo at one position along its travel to simulate a speed
                   
                 }
@@ -314,8 +315,6 @@ void initPWMHat(){
     		exit(1);
 	}
 
-	setAllPWM(0,0);
-
 	res = i2c_smbus_write_byte_data(file, __MODE2, __OUTDRV);
 	if(res < 0)
 		perror("erro1");
@@ -341,6 +340,7 @@ void chatterCallback(const std_msgs::Int16MultiArray::ConstPtr& msg)
 {
 	short int arr[16];
 	int i=0;
+	int prePWM=0;
 
 	for(std::vector<short int>::const_iterator it = msg->data.begin(); it != msg->data.end(); ++it)
 	{
@@ -349,9 +349,10 @@ void chatterCallback(const std_msgs::Int16MultiArray::ConstPtr& msg)
 		ROS_INFO("val:[%d]", arr[i]);
 
 		if(arr[i] < 4096)
-
-			movef(event,1100,25,25,getPWM(i),arr[i],i);
-			//setPWM(i,arr[i]);
+				
+			ROS_INFO("get PWM: %d", getPWM(i));
+			movef(event,200,3,3,(float)getPWM(i),(float)arr[i],i);
+			///setPWM(i,arr[i]);
 
 		//ROS_INFO("Getting PWM %d from channel %d", getPWM(i), i);
 		i++;
