@@ -1,5 +1,5 @@
 #include "ros/ros.h"
-#include "std_msgs/Int16MultiArray.h"
+#include "da_lamp_msgs/JointState.h"
 
 #include <errno.h>
 #include <string.h>
@@ -336,28 +336,36 @@ void initPWMHat(){
 
 }
 
-void chatterCallback(const std_msgs::Int16MultiArray::ConstPtr& msg)
+void chatterCallback(const da_lamp_msgs::JointState::ConstPtr& msg)
 {
 	short int arr[16];
 	int i=0;
 	int prePWM=0;
 
-	for(std::vector<short int>::const_iterator it = msg->data.begin(); it != msg->data.end(); ++it)
-	{
-		arr[i] = *it;
-		//i++;
-		ROS_INFO("val:[%d]", arr[i]);
+	
 
-		if(arr[i] < 4096)
-				
-			ROS_INFO("get PWM: %d", getPWM(i));
-			movef(event,200,3,3,(float)getPWM(i),(float)arr[i],i);
-			///setPWM(i,arr[i]);
+	movef(event,200,3,3,(float)getPWM(1),(float)msg->Joint1,1);
+	movef(event,200,3,3,(float)getPWM(2),(float)msg->Joint2,2);
+	movef(event,200,3,3,(float)getPWM(3),(float)msg->Joint3,3);
+	movef(event,200,3,3,(float)getPWM(4),(float)msg->Joint4,4);
+	movef(event,200,3,3,(float)getPWM(5),(float)msg->Joint5,5);
 
-		//ROS_INFO("Getting PWM %d from channel %d", getPWM(i), i);
-		i++;
-		
-	}
+	// for(std::vector<short int>::const_iterator it = msg->data.begin(); it != msg->data.end(); ++it)
+	// {
+	// 	arr[i] = *it;
+	// 	//i++;
+	// 	ROS_INFO("val:[%d]", arr[i]);
+
+	// 	if(arr[i] < 4096)
+	// 			
+	// 		ROS_INFO("get PWM: %d", getPWM(i));
+	// 		movef(event,200,3,3,(float)getPWM(i),(float)arr[i],i);
+	// 		///setPWM(i,arr[i]);
+
+	// 	//ROS_INFO("Getting PWM %d from channel %d", getPWM(i), i);
+	// 	i++;
+	// 	
+	// }
 
   //ROS_INFO("I heard: [%d]", msg->data);
 }
