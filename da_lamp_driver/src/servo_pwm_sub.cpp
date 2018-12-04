@@ -338,17 +338,21 @@ void initPWMHat(){
 
 void chatterCallback(const da_lamp_msgs::JointState::ConstPtr& msg)
 {
-	short int arr[16];
-	int i=0;
-	int prePWM=0;
+	// short int arr[16];
+	// int i=0;
+	// int prePWM=0;
 
-	
+	int joint1 = msg->Joint1;	
+	int joint2 = msg->Joint2;	
+	int joint3 = msg->Joint3;	
+	int joint4 = msg->Joint4;	
+	int joint5 = msg->Joint5;	
 
-	movef(event,200,3,3,(float)getPWM(1),(float)msg->Joint1,1);
-	movef(event,200,3,3,(float)getPWM(2),(float)msg->Joint2,2);
-	movef(event,200,3,3,(float)getPWM(3),(float)msg->Joint3,3);
-	movef(event,200,3,3,(float)getPWM(4),(float)msg->Joint4,4);
-	movef(event,200,3,3,(float)getPWM(5),(float)msg->Joint5,5);
+	movef(event,200,3,3,(float)getPWM(0),(float)joint1,0);
+	movef(event,200,3,3,(float)getPWM(1),(float)joint2,1);
+	movef(event,200,3,3,(float)getPWM(2),(float)joint3,2);
+	movef(event,200,3,3,(float)getPWM(3),(float)joint4,3);
+	movef(event,200,3,3,(float)getPWM(4),(float)joint5,4);
 
 	// for(std::vector<short int>::const_iterator it = msg->data.begin(); it != msg->data.end(); ++it)
 	// {
