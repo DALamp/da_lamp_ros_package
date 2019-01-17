@@ -7,7 +7,7 @@
     </contributor>
     <created>2018-09-23T21:31:13</created>
     <modified>2018-09-23T21:31:13</modified>
-    <unit name="meter" meter="1" />
+    <unit name="meter" meter="0.001" />
     <up_axis>Y_UP</up_axis>
   </asset>
   <library_effects>

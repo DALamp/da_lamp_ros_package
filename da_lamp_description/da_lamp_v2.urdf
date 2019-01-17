@@ -46,12 +46,12 @@
 </link>
 <link name="head__1">
   <inertial>
-    <origin rpy="0 0 0" xyz="-0.119199 -0.266383 0.0"/>
+    <origin rpy="0 0 0" xyz="-0.144142 -0.266383 0.0"/>
     <mass value="0.297452"/>
     <inertia ixx="0.026468" ixy="-0.010849" ixz="-0.0" iyy="0.005133" iyz="-0.0" izz="0.031129"/>
   </inertial>
   <visual>
-    <origin rpy="0 0 0" xyz="-0.119199 -0.266383 0.0"/>
+    <origin rpy="0 0 0" xyz="-0.144142 -0.266383 0.0"/>
     <geometry>
       <mesh filename="package://da_lamp_description/mesh/head__1.dae"/>
     </geometry>
@@ -60,7 +60,7 @@
     </material>
   </visual>
   <collision>
-    <origin rpy="0 0 0" xyz="-0.119199 -0.266383 0.0"/>
+    <origin rpy="0 0 0" xyz="-0.144142 -0.266383 0.0"/>
     <geometry>
       <mesh filename="package://da_lamp_description/mesh/head__1.dae"/>
     </geometry>
@@ -220,17 +220,35 @@
     </geometry>
   </collision>
 </link>
+<joint name="Rev1" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 0.07 0.0"/>
+  <parent link="base_link"/>
+  <child link="link1__1"/>
+  <axis xyz="0.0 0.01 0.0"/>
+</joint>
 <joint name="Rev2" type="continuous">
   <origin rpy="0 0 0" xyz="0.044 0.035 0.0075"/>
   <parent link="link1__1"/>
   <child link="link3__1"/>
   <axis xyz="0.0 0.0 0.01"/>
 </joint>
-<joint name="Rev11" type="continuous">
-  <origin rpy="0 0 0" xyz="-0.017443 0.052175 -0.0075"/>
-  <parent link="link8__1"/>
-  <child link="head__1"/>
-  <axis xyz="0.004434 -0.008963 0.0"/>
+<joint name="Rev3" type="continuous">
+  <origin rpy="0 0 0" xyz="0.001452 0.049651 0.0075"/>
+  <parent link="link1__1"/>
+  <child link="link2__1"/>
+  <axis xyz="0.0 0.0 0.01"/>
+</joint>
+<joint name="Rev4" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.157204 0.160971 0.0"/>
+  <parent link="link2__1"/>
+  <child link="link4__1"/>
+  <axis xyz="-0.0 -0.0 -0.01"/>
+</joint>
+<joint name="Rev6" type="continuous">
+  <origin rpy="0 0 0" xyz="0.052318 0.059471 0.0"/>
+  <parent link="link4__1"/>
+  <child link="link5__1"/>
+  <axis xyz="0.0 0.0 0.01"/>
 </joint>
 <joint name="Rev7" type="continuous">
   <origin rpy="0 0 0" xyz="0.072271 0.019136 0.0"/>
@@ -250,28 +268,10 @@
   <child link="link8__1"/>
   <axis xyz="0.0 -0.0 0.01"/>
 </joint>
-<joint name="Rev6" type="continuous">
-  <origin rpy="0 0 0" xyz="0.052318 0.059471 0.0"/>
-  <parent link="link4__1"/>
-  <child link="link5__1"/>
-  <axis xyz="0.0 0.0 0.01"/>
-</joint>
-<joint name="Rev4" type="continuous">
-  <origin rpy="0 0 0" xyz="-0.157204 0.160971 0.0"/>
-  <parent link="link2__1"/>
-  <child link="link4__1"/>
-  <axis xyz="-0.0 -0.0 -0.01"/>
-</joint>
-<joint name="Rev1" type="continuous">
-  <origin rpy="0 0 0" xyz="0.0 0.07 0.0"/>
-  <parent link="base_link"/>
-  <child link="link1__1"/>
+<joint name="Rev11" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0075 0.052175 -0.0075"/>
+  <parent link="link8__1"/>
+  <child link="head__1"/>
   <axis xyz="0.0 0.01 0.0"/>
-</joint>
-<joint name="Rev3" type="continuous">
-  <origin rpy="0 0 0" xyz="0.001452 0.049651 0.0075"/>
-  <parent link="link1__1"/>
-  <child link="link2__1"/>
-  <axis xyz="0.0 0.0 0.01"/>
 </joint>
 </robot>
