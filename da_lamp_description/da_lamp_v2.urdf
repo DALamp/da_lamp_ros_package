@@ -237,12 +237,14 @@
   <parent link="link1__1"/>
   <child link="link2__1"/>
   <axis xyz="0.0 0.0 0.01"/>
+  <mimic joint="Rev2" multiplier="1" offset="0" />
 </joint>
 <joint name="Rev4" type="continuous">
   <origin rpy="0 0 0" xyz="-0.157204 0.160971 0.0"/>
   <parent link="link2__1"/>
   <child link="link4__1"/>
   <axis xyz="-0.0 -0.0 -0.01"/>
+  <mimic joint="Rev2" multiplier="1" offset="0" />
 </joint>
 <joint name="Rev6" type="continuous">
   <origin rpy="0 0 0" xyz="0.052318 0.059471 0.0"/>
@@ -255,12 +257,14 @@
   <parent link="link4__1"/>
   <child link="link6__1"/>
   <axis xyz="0.0 0.0 0.01"/>
+  <mimic joint="Rev6" multiplier="1" offset="0" />
 </joint>
 <joint name="Rev8" type="continuous">
   <origin rpy="0 0 0" xyz="0.18503 -0.128019 0.0"/>
   <parent link="link5__1"/>
   <child link="link7__1"/>
   <axis xyz="-0.0 -0.0 -0.01"/>
+  <mimic joint="Rev6" multiplier="1" offset="0" />
 </joint>
 <joint name="Rev10" type="continuous">
   <origin rpy="0 0 0" xyz="0.055046 0.002134 0.0"/>
